@@ -159,12 +159,26 @@ public:
     std::vector<std::vector<int> > solve_remove_with_max_zero(std::vector<std::vector<int> >& mat)
     {
         std::vector<std::vector<int> > v1 = find_zeros(mat);
+
         std::vector<std::vector<int> > res;
         int row = find_max_in_matr(v1);
         std::cout << std::endl
                   << "row: " << row << std::endl;
-        std::vector<std::vector<int> >::iterator it = mat.begin() + row;
-        copy(mat.begin(), it, back_inserter(res));
+        if (row == mat.size()-1){
+            std::vector<std::vector<int> >::iterator it = mat.begin() + row;
+            copy(mat.begin(), it, back_inserter(res));
+        }
+        else if (row == 0){
+             std::vector<std::vector<int> >::iterator it1 = mat.begin() + 1;
+             copy(it1, mat.end(), back_inserter(res));
+        }
+        else{
+
+            std::vector<std::vector<int> >::iterator it1 = mat.begin() + row;
+            std::vector<std::vector<int> >::iterator it2 = it1 + 1;
+            copy(mat.begin(), it1, back_inserter(res));
+            res.insert(res.end(), it2, mat.end());
+        }
         return res;
     }
     std::vector<std::vector<int> > sort_after_md(std::vector<std::vector<int> >& mat)
@@ -192,7 +206,8 @@ public:
 
 int main()
 {
-    std::vector<std::vector<int> > v = { { 3, -32, 22, 0 }, { 2, 0, -8, -6 }, { -28, 2, -8, -10 }, { 4, 5, -31, 0 } };
+    std::vector<std::vector<int> > v = { { 3, -32, 22, 1 }, { 2, 0, -8, -6 },
+                                         { -28, 2, -8, -10 }, { 4, 5, -31, 1 } };
     Task2 task2;
     task2.printElement(v);
     std::cout << std::endl;
