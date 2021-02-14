@@ -69,7 +69,9 @@ void task1(bool bad){
                   << std::endl;
     }
     else{
-        std::cout << '\n' << "Result of task 1: " << result << std::endl;
+        std::cout << '\n' << "Result of task 1 (index): " << result
+                  << '\n' << "Result of task 1 (number): " << result + 1
+                  << std::endl;
     }
 }
 int main()
