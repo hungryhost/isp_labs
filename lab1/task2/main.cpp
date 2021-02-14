@@ -47,7 +47,6 @@ private:
             std::exit(EXIT_FAILURE);
         }
 
-        extracted_column.reserve(n);
         for (int j = 0; j < n; j++) {
             extracted_column.push_back(mat[j][i]);
         }
@@ -99,7 +98,6 @@ public:
         std::vector<int> new_row;
         int min_value = find_min_in_column(values);
         // std::cout << "value " << min_value << std::endl;
-        new_row.reserve(len);
         for (int i = 0; i < len; i++) {
             new_row.push_back(min_value);
         }
@@ -116,7 +114,7 @@ public:
                 indexes.push_back(distance(row.begin(), row_i));
             }
         }
-        if (indexes.empty()) {
+        if (indexes.size() == 0) {
             max_index.push_back(-1);
         }
         else {
@@ -133,7 +131,6 @@ public:
         std::vector<int>::iterator col;
         std::vector<std::vector<int> > indexes;
         int n = mat[0].size();
-        res.reserve(n);
         for (int i = 0; i < n; i++) {
             res.push_back(find_zeros_in_row(mat[i]));
         }
@@ -143,7 +140,7 @@ public:
     int find_max_in_matr(std::vector<std::vector<int> >& indexes)
     {
         int temp = 0;
-        location l{};
+        location l;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 1; j++) {
 
@@ -164,7 +161,7 @@ public:
         int row = find_max_in_matr(v1);
         std::cout << std::endl
                   << "row: " << row << std::endl;
-        auto it = mat.begin() + row;
+        std::vector<std::vector<int> >::iterator it = mat.begin() + row;
         copy(mat.begin(), it, back_inserter(res));
         return res;
     }
