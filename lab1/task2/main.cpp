@@ -4,12 +4,14 @@
 #include <algorithm>
 #include <chrono>
 class Task2 {
+
+
+private:
     struct location {
         int x;
         int y;
     };
 
-private:
     int count_zeroes_in_matrix(std::vector<std::vector<int> >& mat)
     {
         int z_count = 0;
